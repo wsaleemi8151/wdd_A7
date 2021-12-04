@@ -21,7 +21,6 @@ namespace A07
         [WebMethod]
         //#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
         public static new string GetFilesList()
-        //#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
         {
             string returnData;  // final JSON return value
             string status;
@@ -87,7 +86,9 @@ namespace A07
             return returnData;
         }
 
+        protected void FileList_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }
