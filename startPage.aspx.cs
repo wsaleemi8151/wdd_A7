@@ -18,20 +18,36 @@ namespace A07
         }
 
 
-        // METHOD            :   OpenFile
-        // DESCRIPTION       :   Opens the file specified by the parameter and then sends
-        //                      the data back as a key pair containing the status and the
-        //                      data itself.
-        //
-        // PARAMETERS        :
-        // string fileToLoad :   contains the filename to open
-        //                       - remember that since the "parameter" is being passed to this method using AJAX/JSON
-        //                         then the parameter name in this method *must* be the same that the "key" value used
-        //                         in the $.ajax() (jQuery) call in JavaScript
-        //
-        // RETURNS           :
-        //  string           :   JSON structure holding the (1) file open status and (2) file contents
-        //
+        [WebMethod]
+        //#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
+        public static new string GetFilesList()
+        //#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
+        {
+            string returnData;  // final JSON return value
+            string status;
+            string folderPath;
+            string[] myFiles;
+
+            try
+            {
+                folderPath = HttpContext.Current.Server.MapPath("MyFiles");
+
+                status = "Success";
+                myFiles = Directory.GetFiles(folderPath);
+
+            }
+            catch (Exception e)
+            {
+                // I need to return something in the JSON value to indicate the exception/hold some
+                // useful information for the user ...
+                status = "Exception";
+                myFiles = null;
+            }
+
+            returnData = JsonConvert.SerializeObject(new { status = status, myFiles = myFiles });
+            return returnData;
+        }
+
         [WebMethod]
         //#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
         public static new string OpenFile(string fileToLoad)
@@ -70,5 +86,8 @@ namespace A07
             returnData = JsonConvert.SerializeObject(new { status = fileStatus, description = fileContents });
             return returnData;
         }
+
+
+
     }
 }
