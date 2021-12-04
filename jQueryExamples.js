@@ -1,4 +1,4 @@
-﻿
+﻿// Gursharan - got it!!!
 // global variable - for use in jQuery (AJAX) calls
 var jQueryXMLHttpRequest; 
 
