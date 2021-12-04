@@ -6,6 +6,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Http;
+using System.IO;
 
 namespace A07
 {
@@ -15,6 +16,12 @@ namespace A07
         {
             // Code that runs on application startup
             GlobalConfiguration.Configure(WebApiConfig.Register);
+
+            string folderPath = HttpContext.Current.Server.MapPath("MyFiles");
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
         }
     }
 }
