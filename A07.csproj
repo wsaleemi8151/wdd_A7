@@ -83,7 +83,6 @@
     <Content Include="Assets\jquery-text-editor.js" />
     <Content Include="Assets\style.css" />
     <Content Include="Global.asax" />
-    <Content Include="jQueryExamples.js" />
     <Content Include="startPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>

@@ -5,19 +5,8 @@
 <head runat="server">
     <title>WDD A07 Text Editor</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="jQueryExamples.js"></script>
     <script src="Assets/jquery-text-editor.js"></script>
     <link href="Assets/style.css" rel="stylesheet" />
-    <style type="text/css">
-        #SaveBtn {
-            height: 20px;
-            width: 48px;
-        }
-        #SaveAsBtn {
-            height: 20px;
-            width: 83px;
-        }
-    </style>
 </head>
 <body>
     <form runat="server">
@@ -26,28 +15,16 @@
                 <h1 class="page-title">WDD A07 Text Editor</h1>
             </div>
 
-             <div class="User_div">
-                 <table style="width: 286px; margin-left: 163px">
-                     <tr>
-                       
-                    <td>
-                        <input id="SaveBtn" type="button" value="Save" />
+            <div class="User_div">
+                <table class="details-table">
+                    <tr>
+                        <td>
+                            <select id="ddlMyFiles" aria-haspopup="False" aria-hidden="False" aria-sort="ascending" name="D1">
+                            </select>
                         </td>
-                          <td>
-                        <input id="SaveAsBtn" type="button" value="Save As" />
-                        </td>
-                         <td>
-                             <select id="myFiles" aria-haspopup="False" aria-hidden="False" aria-sort="ascending" name="D1">
-                              
-                                 <option value="none" selected="selected" disabled="disabled"  hidden="hidden">Select an File</option>
-                                 <option value="free">Free</option>
-                                 <option value="starter">Starter </option>
-                                 <option value="professional">Professional</option>
-                                 <option value="corporate">Corporate</option>
-                             </select></td>
-                     </tr>
-                     
-                 </table>
+                    </tr>
+                </table>
+
             </div>
 
 
@@ -56,8 +33,27 @@
                 <br />
                 <br />
 
-                
+
             </div>
+
+            <div class="User_div">
+                <table class="details-table">
+                    <tr>
+                        <td>
+                            <input type="text" name="txtFileName" id="txtFileName" value="" />
+                        </td>
+                        <td>
+                            <input class="saveFile" id="SaveBtn" type="button" value="Save" disabled="disabled" title="Save the current selected file with updated data." />
+                        </td>
+                        <td>
+                            <input class="saveFile" id="SaveAsBtn" type="button" value="Save As" disabled="disabled" title="Save as a new file with updated data." />
+                        </td>
+                        <td></td>
+                    </tr>
+
+                </table>
+            </div>
+
 
             <div class="statusBar">
                 <p id="statusMessage" class="statusBarText"></p>

@@ -13,6 +13,12 @@
     color: darkgray;
 }
 
+#statusMessage {
+    text-align: center;
+    margin: 30px;
+    color: #5c5858;
+    font-size: 20px;
+}
 
 #textFileContentArea {
     width: 80%;
@@ -20,9 +26,42 @@
     border: 2px solid lightgrey;
     border-radius: 10px;
     padding: 10px;
-    margin-top: 53px;
+    margin-top: 10px;
+    resize: none;
 }
 
 .controls-div {
     width: 100%;
+}
+
+#SaveBtn {
+    height: 30px;
+    width: 70px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#SaveAsBtn {
+    height: 30px;
+    width: 90px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#ddlMyFiles {
+    height: 30px;
+    padding: 5px;
+    min-width: 180px;
+    cursor: pointer;
+}
+
+#txtFileName {
+    height: 30px;
+    padding: 2px;
+}
+
+
+.details-table {
+    margin-left: 180px;
+    margin-top: 10px
 }

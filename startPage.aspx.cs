@@ -34,6 +34,11 @@ namespace A07
                 status = "Success";
                 myFiles = Directory.GetFiles(folderPath);
 
+                for (int i = 0; i < myFiles.Length; i++)
+                {
+                    myFiles[i] = Path.GetFileName(myFiles[i]);
+                }
+
             }
             catch (Exception e)
             {
@@ -86,9 +91,45 @@ namespace A07
             return returnData;
         }
 
-        protected void FileList_SelectedIndexChanged(object sender, EventArgs e)
+        [WebMethod]
+        //#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
+        public static new string SaveFile(string fileName, string fileContents)
+        //#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
         {
+            string returnData;  // final JSON return value
+            string fileStatus;
+            string filepath;
 
+            try
+            {
+                filepath = HttpContext.Current.Server.MapPath("MyFiles");
+                filepath = filepath + @"\" + fileName;
+
+                File.WriteAllText(filepath, fileContents);
+
+                returnData = JsonConvert.SerializeObject(new { status = "success" });
+                return returnData;
+                //if (File.Exists(filepath))
+                //{
+                //    fileStatus = "Success";
+                //    fileContents = File.ReadAllText(filepath);
+                //}
+                //else
+                //{
+                //    fileStatus = "Failure";
+                //    fileContents = "File doesn't exist";
+                //}
+            }
+            catch (Exception e)
+            {
+                // I need to return something in the JSON value to indicate the exception/hold some
+                // useful information for the user ...
+                fileStatus = "Exception";
+                fileContents = "Something bad happened : " + e.ToString();
+            }
+
+            returnData = JsonConvert.SerializeObject(new { status = fileStatus, description = fileContents });
+            return returnData;
         }
     }
 }
